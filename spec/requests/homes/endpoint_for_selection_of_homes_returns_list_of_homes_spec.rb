@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 context 'When a request is made to /api/v1/homes/featured' do
-  describe 'a list of Home objects in JSON format is returned' do
+  scenario 'a list of Home objects in JSON format is returned' do
     get '/api/v1/homes/featured'
 
     expect(response).to be_successful
