@@ -50,6 +50,8 @@ group :development, :test do
   gem 'active_designer'
   gem 'factory_bot_rails'
   gem 'database_cleaner'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

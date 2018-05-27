@@ -172,3 +172,6 @@ typings/
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore cassettes
+/fixtures/vcr_cassettes
