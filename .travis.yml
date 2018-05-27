@@ -1,0 +1,18 @@
+addons:
+  postgresql: 9.6
+dist: trusty
+language: ruby
+cache: bundler
+rvm:
+- 2.4.3
+script:
+- bundle exec rails db:create RAILS_ENV=test
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
+branches:
+  only:
+  - master
+deploy:
+  provider: heroku
+  api_key:
+    secure: NOwv2TfVF6tFE4Xt1Job4eP+SED3Kktgc38p7h6akTntQXxKx2hEZ9HBal4SpRYWNN0pqmOSMjnX44mo7kV9LNT7gRGDE/5fppgWXjYl4OaSSBQVJbbJOuFRFduDdF7csZV1JQg22NrZBC4Ttof4fN4URzul8ZZO3q21ANlFM7D91jTdwaonBW0HQy1M4nlSpXI0lin1f0lCLyjsFWl44/izt9rTNN3QHK9fpHEK/+Yn6x0pjHWVheXVm59ns/43/sg3bxwBL01TqbxJhGH25NvPuvCqGp/uwEw/Ms5bl523OrJbSMaA86xXjoE6HAtNf3YqVOo3XSV+Cpsf2Mskvqe2tdYSF5NmnYgXhMk812NZO+7sF3ytgauSh0FXq+pdsBZdyZyT2yf+JxSDgH0RTG6CA6Ba2RPDfKZOsVMWeqsez6lZvptQkhQraKcgIci8f9bqG8t2ohvuN42Sq1eEiDOI/l7RxytEp60wIuE23CquQ+ix1h3x2EpS/h5ctBhxRT2gwTlJIEhDmxnDM4he9Zn0HVct+Cd5Te9yAiqMKWM6QUB+FK68+As13ofjknNpPqDf0AWdXq35zQ8j2J1+YZz2+suFW1Iq+R7HBK8nT73qIRKyEf9Qe4+DBsHWLTTvbPL2GkYoy0aFEVw4kRKOxN41KIjKH0qZtP1K6cz41n0=
