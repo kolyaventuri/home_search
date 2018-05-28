@@ -17,10 +17,12 @@ describe Home, type: :model do
     home = Home.from_json(home_json)
 
     expect(home).to be_a Home
+    expect(home).to be_valid
 
-    standard_fields = home_json[:StandardFields]
+    data = JSON.parse(home_json, symbolize_names: true)
+    standard_fields = data[:StandardFields]
 
-    expect(home.spark_id).to eq(home_json[:Id])
+    expect(home.spark_id).to eq(data[:Id])
     expect(home.mls_id).to eq(standard_fields[:ListingId])
     expect(home.list_price).to eq(standard_fields[:ListPrice])
     expect(home.address).to eq(standard_fields[:UnparsedAddress])

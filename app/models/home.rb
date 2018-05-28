@@ -11,6 +11,19 @@ class Home < ApplicationRecord
 
   def self.from_json(json)
     home = new
-    binding.pry
+    data = JSON.parse(json, symbolize_names: true)
+    standard_fields = data[:StandardFields]
+
+    home.spark_id = data[:Id]
+    home.mls_id = standard_fields[:ListingId]
+    home.list_price = standard_fields[:ListPrice]
+    home.address = standard_fields[:UnparsedAddress]
+    home.total_baths = standard_fields[:BathsTotal]
+    home.total_beds = standard_fields[:BedsTotal]
+    home.garage_spaces = standard_fields[:GarageSpaces]
+    home.lot_size = standard_fields[:LotSizeAcres]
+    home.sqft = standard_fields[:BuildingAreaTotal]
+
+    home
   end
 end
