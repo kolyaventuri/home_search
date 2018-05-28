@@ -18,27 +18,23 @@ context 'When a request is made to /api/v1/homes/search' do
 
         result = JSON.parse(response.body, symbolize_names: true)
 
-        expect(result[:page][:current]).to be(1)
+        expect(result[:pagination][:CurrentPage]).to be(1)
         expect(result[:results].first[:list_price]).to_not be_nil
-
-        if first_home_requested.nil?
-          first_home_requested = result[:results].first[:address]
-        else
-          exepct(first_home_requested).to_not eq(result[:results].first[:address])
-        end
       end
     end
   end
 
-  xcontext 'with given parameters for page 2' do
+  context 'with given parameters for page 2' do
     scenario 'more homes are returned' do
+      VCR.use_cassette('home_search_1_p2', allow_unused_http_interactions: true) do
+        get "/api/v1/homes/search?#{query_paginated}"
 
-      # Identical search to top test
+        expect(response).to be_successful
 
-      if first_home_requested.nil?
-        first_home_requested = result[:results].first[:address]
-      else
-        exepct(first_home_requested).to_not eq(result[:results].first[:address])
+        result = JSON.parse(response.body, symbolize_names: true)
+
+        expect(result[:pagination][:CurrentPage]).to be(2)
+        expect(result[:results].first[:list_price]).to_not be_nil
       end
     end
   end
