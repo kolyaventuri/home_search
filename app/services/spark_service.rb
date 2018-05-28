@@ -26,6 +26,34 @@ class SparkService
     }
   end
 
+  def self.build_filter(params)
+    filters = []
+    params.each do |key, value|
+      case key
+      when 'zip'
+        filters.push("PostalCode Eq '#{value}'")
+      when 'minPrice'
+        filters.push("ListPrice Ge #{value}")
+      when 'maxPrice'
+        filters.push("ListPrice Le #{value}")
+      when 'minBeds'
+        filters.push("BedsTotal Ge #{value}")
+      when 'maxBeds'
+        filters.push("BedsTotal Le #{value}")
+      when 'minBaths'
+        filters.push("BathsTotal Ge #{value}")
+      when 'maxBaths'
+        filters.push("BathsTotal Le #{value}")
+      when 'minSqft'
+        filters.push("BuildingAreaTotal Ge #{value}")
+      when 'maxSqft'
+        filters.push("BuildingAreaTotal Le #{value}")
+      end
+    end
+
+    filters.join(' And ')
+  end
+  
   private
 
   def self.make_request(endpoint, opts=nil)
@@ -37,16 +65,5 @@ class SparkService
     end
 
     SparkApi.client.get endpoint, opts
-  end
-
-  def self.build_filter(params)
-    filters = []
-    params.each do |key, value|
-      if key == 'zip'
-        filters.push("PostalCode Eq '#{value}'")
-      end
-    end
-
-    filters.join(' And ')
   end
 end
