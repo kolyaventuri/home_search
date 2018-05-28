@@ -10,9 +10,8 @@ class Home < ApplicationRecord
   validates_presence_of :lot_size
   validates_presence_of :sqft
 
-  def self.from_json(json)
+  def self.from_json(data)
     home = new
-    data = JSON.parse(json, symbolize_names: true)
     standard_fields = data[:StandardFields]
 
     home.spark_id = data[:Id]

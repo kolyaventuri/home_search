@@ -14,13 +14,13 @@ describe Home, type: :model do
 
   it 'should be able to load a home from JSON' do
     home_json = File.read('fixtures/home.json')
+    data = JSON.parse(home_json, symbolize_names: true)
 
-    home = Home.from_json(home_json)
+    home = Home.from_json(data)
 
     expect(home).to be_a Home
     expect(home).to be_valid
 
-    data = JSON.parse(home_json, symbolize_names: true)
     standard_fields = data[:StandardFields]
 
     expect(home.spark_id).to eq(data[:Id])

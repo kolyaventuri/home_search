@@ -1,8 +1,9 @@
 class SparkService
   def self.featured
     homes = make_request("/listings")
+
     homes.map do |home|
-      Home.from_json(home)
+      Home.from_json(home.deep_symbolize_keys)
     end
   end
 

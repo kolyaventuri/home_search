@@ -12,8 +12,8 @@ context 'When a request is made to /api/v1/homes/featured' do
       expect(homes).to be_an Array
       home = homes.first
 
-      expect(home[:ListPrice]).to_not be_nil
-      expect(home[:UnparsedAddress]).to_not be_nil
+      expect(home[:list_price]).to_not be_nil
+      expect(home[:address]).to_not be_nil
       # There's so much home data and not all of it is guaranteed to
       # come through so there's only so much that we can actually test for.
 
