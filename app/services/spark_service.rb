@@ -29,8 +29,13 @@ class SparkService
   def self.build_filter(params)
     filters = []
     params.each do |key, value|
-      if key == 'zip'
+      case key
+      when 'zip'
         filters.push("PostalCode Eq '#{value}'")
+      when 'minPrice'
+        filters.push("ListPrice Ge #{value}")
+      when 'maxPrice'
+        filters.push("ListPrice Le #{value}")
       end
     end
 

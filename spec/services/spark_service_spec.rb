@@ -8,9 +8,9 @@ describe SparkService, type: :service do
 
     expect(SparkService.build_filter(params_1)).to eq("PostalCode Eq '#{params_1['zip']}'")
 
-    expect(SparkService.build_filter(params_2)).to eq("PostalCode Eq '#{params_2['zip']}' And ListPrice Gt '#{params_2['minPrice']}'")
+    expect(SparkService.build_filter(params_2)).to eq("PostalCode Eq '#{params_2['zip']}' And ListPrice Ge #{params_2['minPrice']}")
     
-    expect(SparkService.build_filter(params_3)).to eq("PostalCode Eq '#{params_3['zip']}' And ListPrice Gte '#{params_3['minPrice']}' And ListPrice Lte #{params_3['maxPrice']}")
+    expect(SparkService.build_filter(params_3)).to eq("PostalCode Eq '#{params_3['zip']}' And ListPrice Ge #{params_3['minPrice']} And ListPrice Le #{params_3['maxPrice']}")
 
   end
 end
