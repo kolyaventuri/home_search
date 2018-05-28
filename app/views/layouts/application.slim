@@ -4,8 +4,11 @@ html
     title Lifestyle
     = csrf_meta_tags
     = csp_meta_tag
-
-    = stylesheet_link_tag    'application', media: 'all'
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    = stylesheet_link_tag 'application', media: 'all'
+    link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.0.13/css/regular.css" integrity="sha384-HLkkol/uuRVQDnHaAwidOxb1uCbd78FoGV/teF8vONYKRP9oPQcBZKFdi3LYDy/C" rel="stylesheet"
+      link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.0.13/css/brands.css" integrity="sha384-t3MQUMU0g3tY/0O/50ja6YVaEFYwPpOiPbrHk9p5DmYtkHJU2U1/ujNhYruOJwcj" rel="stylesheet"
+        link crossorigin="anonymous" href="https://pro.fontawesome.com/releases/v5.0.13/css/fontawesome.css" integrity="sha384-LDuQaX4rOgqi4rbWCyWj3XVBlgDzuxGy/E6vWN6U7c25/eSJIwyKhy9WgZCHQWXz" rel="stylesheet"
 
   body
     == yield
