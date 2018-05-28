@@ -2,7 +2,7 @@ require 'rails_helper'
 
 context 'When a request is made to /api/v1/homes/featured' do
   scenario 'a list of Home objects in JSON format is returned' do
-    VCR.use_cassette('featured_homes') do
+    VCR.use_cassette('featured_homes', allow_unused_http_interactions: true) do
       get '/api/v1/homes/featured'
 
       expect(response).to be_successful
