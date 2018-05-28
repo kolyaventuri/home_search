@@ -1,0 +1,16 @@
+@import "animations/_loading";
+
+.home {
+    color: #FFF;
+
+    width: 250px;
+    height: 200px;
+
+    &.loading {
+        .hero {
+            width: 100%;
+            height: 100%;
+            @include loadingIndefinite;
+        }
+    }
+}

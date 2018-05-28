@@ -5,14 +5,31 @@ import Home from '../bundles/Lifestyle/components/Home'
 import 'whatwg-fetch'
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('/api/v1/homes/featured').then(response => {
-    return response.json();
-  }).then(json => {
-    console.log(json);
-  });
+  let featuredHomeContainer = document.querySelector('#featuredHomes')
+
+
+  let featuredHomes = [];
+
+  for(let i = 0; i < 10; i++) {
+    featuredHomes.push(<Home key={i} />);
+  }
 
   ReactDOM.render(
-    <Home list_price={10} first_line_address="Address" />,
-    document.body.appendChild(document.createElement('div')),
+    featuredHomes,
+    featuredHomeContainer,
+    () => {
+       getHomes(featuredHomes);
+    }
   );
-})
+});
+
+const getHomes = (elements) => {
+  fetch('/api/v1/homes/featured').then(response => {
+    return response.json();
+  }).then(homes => {
+    for(let i = 0; i < homes.length; i++) {
+      let home = homes[i];
+      console.log(home);
+    }
+  });
+};
