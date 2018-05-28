@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :homes do
         get '/featured', to: 'featured#index'
+        get '/search', to: 'search#index'
       end
     end
   end
