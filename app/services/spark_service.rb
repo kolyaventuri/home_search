@@ -26,6 +26,17 @@ class SparkService
     }
   end
 
+  def self.build_filter(params)
+    filters = []
+    params.each do |key, value|
+      if key == 'zip'
+        filters.push("PostalCode Eq '#{value}'")
+      end
+    end
+
+    filters.join(' And ')
+  end
+  
   private
 
   def self.make_request(endpoint, opts=nil)
@@ -37,16 +48,5 @@ class SparkService
     end
 
     SparkApi.client.get endpoint, opts
-  end
-
-  def self.build_filter(params)
-    filters = []
-    params.each do |key, value|
-      if key == 'zip'
-        filters.push("PostalCode Eq '#{value}'")
-      end
-    end
-
-    filters.join(' And ')
   end
 end
