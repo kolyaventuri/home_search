@@ -36,6 +36,18 @@ class SparkService
         filters.push("ListPrice Ge #{value}")
       when 'maxPrice'
         filters.push("ListPrice Le #{value}")
+      when 'minBeds'
+        filters.push("BedsTotal Ge #{value}")
+      when 'maxBeds'
+        filters.push("BedsTotal Le #{value}")
+      when 'minBaths'
+        filters.push("BathsTotal Ge #{value}")
+      when 'maxBaths'
+        filters.push("BathsTotal Le #{value}")
+      when 'minSqft'
+        filters.push("BuildingAreaTotal Ge #{value}")
+      when 'maxSqft'
+        filters.push("BuildingAreaTotal Le #{value}")
       end
     end
 
