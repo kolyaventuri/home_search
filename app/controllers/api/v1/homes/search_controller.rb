@@ -7,6 +7,7 @@ class Api::V1::Homes::SearchController < ApplicationController
 
   def search_params
     params.permit(
+      :page,
       :zip,
       :minPrice,
       :maxPrice,
