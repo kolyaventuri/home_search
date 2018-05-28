@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 describe Home, type: :model do
+  it { is_expected.to validate_presence_of(:spark_id) }
+  it { is_expected.to validate_presence_of(:mls_id) }
+  it { is_expected.to validate_presence_of(:list_price) }
+  it { is_expected.to validate_presence_of(:address) }
+  it { is_expected.to validate_presence_of(:total_baths) }
+  it { is_expected.to validate_presence_of(:total_beds) }
+  it { is_expected.to validate_presence_of(:garage_spaces) }
+  it { is_expected.to validate_presence_of(:lot_size) }
+  it { is_expected.to validate_presence_of(:sqft) }
+
   it 'should be able to load a home from JSON' do
     home_json = File.read('fixtures/home.json')
 
