@@ -3,6 +3,7 @@ class Home < ApplicationRecord
   validates_presence_of :mls_id
   validates_presence_of :list_price
   validates_presence_of :address
+  validates_presence_of :first_line_address
   validates_presence_of :total_baths
   validates_presence_of :total_beds
   validates_presence_of :garage_spaces
@@ -18,6 +19,7 @@ class Home < ApplicationRecord
     home.mls_id = standard_fields[:ListingId]
     home.list_price = standard_fields[:ListPrice]
     home.address = standard_fields[:UnparsedAddress]
+    home.first_line_address = standard_fields[:UnparsedFirstLineAddress]
     home.total_baths = standard_fields[:BathsTotal]
     home.total_beds = standard_fields[:BedsTotal]
     home.garage_spaces = standard_fields[:GarageSpaces]
