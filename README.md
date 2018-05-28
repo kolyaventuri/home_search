@@ -1,24 +1,12 @@
-# README
+# Lifestyle Home Search
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Spark Platform Keys
+Your Spark Platform API keys can by creating a `config/application.yml` file.
+Please set two variables `SPARK_API_KEY` and `SPARK_SECRET` equal to your Spark Platform API key and secret.
 
-Things you may want to cover:
+## Note About Tests
+Tests rely on valid Spark fixture data. You are required to generate these fixture data files yourselves, as we are not able to include them in the repository for contractual reasons. This will require a valid Spark Platform API key.
 
-* Ruby version
+Required fixture data:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `/fixutres/home.json` - Representing a single home 

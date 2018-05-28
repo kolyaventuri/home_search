@@ -169,3 +169,9 @@ typings/
 
 
 # End of https://www.gitignore.io/api/nodereport/
+
+# Ignore application configuration
+/config/application.yml
+
+# Ignore fixtures
+/fixtures

@@ -40,6 +40,7 @@ gem 'spark_api'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'figaro'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
@@ -49,6 +50,8 @@ group :development, :test do
   gem 'active_designer'
   gem 'factory_bot_rails'
   gem 'database_cleaner'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
