@@ -29,7 +29,11 @@ const getHomes = (elements) => {
   }).then(homes => {
     for(let i = 0; i < homes.length; i++) {
       let home = homes[i];
-      console.log(home);
+      let element = elements[i];
+      element.setState({
+        address: home.first_line_address,
+        list_price: home.list_price 
+      });
     }
   });
 };

@@ -17,6 +17,10 @@ export default class Home extends React.Component {
     };
   }
 
+  update(props) {
+    this.setState(props);
+  }
+
   render() {
     if(!this.state.first_line_address) {
       return (
