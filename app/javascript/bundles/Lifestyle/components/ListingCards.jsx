@@ -7,7 +7,6 @@ export default class ListingCards extends React.Component {
         super(props);
 
         this.state = {
-            loading: true,
             listings: new Array(10).fill({})
         };
     }
@@ -17,6 +16,19 @@ export default class ListingCards extends React.Component {
     }
 
     loadListings() {
+        fetch('/api/v1/homes/featured').then(response => {
+            return response.json();
+        }).then(json => {
+            let listings = json.map(home => {
+                return {
+                    hero: home.hero_image,
+                    address: home.first_line_address,
+                    price: home.list_price
+                }
+            });
+
+            this.setState({ listings });
+        });
     }
 
     render() {
