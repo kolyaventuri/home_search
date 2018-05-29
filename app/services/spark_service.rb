@@ -12,6 +12,7 @@ class SparkService
     opts = {
       _filter: filter,
       _pagination: 1,
+      _expand: 'PrimaryPhoto',
       _page: params[:page] || 1
     }
 
