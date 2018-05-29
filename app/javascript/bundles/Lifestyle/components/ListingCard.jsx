@@ -1,5 +1,6 @@
 import React from 'react'
-import Price from './Price'
+import Price from './listing/Price'
+import Address from './listing/Address'
 
 export default class Listing extends React.Component {
     constructor(props) {
@@ -34,7 +35,7 @@ export default class Listing extends React.Component {
             <div className={'column is-narrow is-one-quarter home ' + (this.state.address ? '': 'loading')}>
                 <div className="hero" style={this.state.address ? listingStyle : {}}></div>
                 <div className='info'>
-                    <p className="address">{ this.state.address }</p>
+                    <Address>{ this.state.address }</Address>
                     <Price>{ this.state.price }</Price>
                 </div>
             </div>
