@@ -6,7 +6,6 @@ export default class Listing extends React.Component {
         super(props);
 
         this.state = {
-            loaded: true,
             address: props.address,
             price: props.price,
             hero: props.hero_small
