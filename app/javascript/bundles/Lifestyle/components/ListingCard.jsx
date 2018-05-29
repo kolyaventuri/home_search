@@ -13,7 +13,7 @@ const Listing = ({ hero, address, price }) => {
             <div className="hero" style={address ? listingStyle : {}}></div>
             <div className='info'>
                 <p className="address">{ address }</p>
-                <Price value={ price } />
+                <Price>{ price }</Price>
             </div>
         </div>
    );

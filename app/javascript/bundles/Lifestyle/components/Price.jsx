@@ -13,7 +13,7 @@ export default class Price extends React.Component {
 
     render() {
         return (
-            <p className="price">{ this.formatter.format(this.props.value) }</p>
+            <p className="price">{ this.formatter.format(this.props.children) }</p>
         )
     }
 }
