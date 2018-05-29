@@ -1,6 +1,10 @@
 class SparkService
   def self.featured
-    homes = make_request('/listings', _filters: 'PostalCode Eq "87114"')
+    opts = {
+      _filters: 'PostalCode Eq "87114"',
+      _expand: 'PrimaryPhoto'
+    }
+    homes = make_request('/listings', opts)
 
     homes.map do |home|
       Home.from_json(home.deep_symbolize_keys)
@@ -12,6 +16,7 @@ class SparkService
     opts = {
       _filter: filter,
       _pagination: 1,
+      _expand: 'PrimaryPhoto',
       _page: params[:page] || 1
     }
 

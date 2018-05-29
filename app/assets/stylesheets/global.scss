@@ -1,0 +1,47 @@
+@import "animations/_loading";
+
+#featuredHomes {
+
+    .home {
+        color: #FFF;
+
+        height: 200px;
+
+        background: #FFF;
+        padding: 0.25em;
+        margin: 0.25em;
+
+        border-radius: 5px;
+
+        position: relative;
+
+        .hero {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        .info {
+            position: absolute;
+            left:0;
+            bottom:0;
+            padding: 0.5em;
+
+            .address {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+
+            .price {
+                font-weight: bold;
+            }
+        }
+        &.loading {
+            .hero {
+                @include loadingIndefinite;
+            }
+        }
+    }
+}
