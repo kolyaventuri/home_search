@@ -7,7 +7,7 @@ import BedsBaths from './listing/BedsBaths'
 const Listing = (props) => {
     return (
         <div className={'column is-narrow home columns ' + (props.address ? '': 'loading')}>
-            <ListingPhoto hero={ props.hero } />
+            <ListingPhoto { ...props } />
             <ListingInfo { ...props } />
         </div>
    );
