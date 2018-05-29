@@ -1,25 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Home from '../bundles/Lifestyle/components/Home'
+import ListingCards from '../bundles/Lifestyle/components/ListingCards'
 import 'whatwg-fetch'
 
 document.addEventListener('DOMContentLoaded', () => {
-  let featuredHomeContainer = document.querySelector('#featuredHomes')
-
-
-  let featuredHomes = [];
-
-  for(let i = 0; i < 10; i++) {
-    featuredHomes.push(<Home key={i} />);
-  }
-
   ReactDOM.render(
-    featuredHomes,
-    featuredHomeContainer,
-    () => {
-       getHomes(featuredHomes);
-    }
+    <ListingCards />,
+    document.querySelector('#featuredHomes')
   );
 });
 
