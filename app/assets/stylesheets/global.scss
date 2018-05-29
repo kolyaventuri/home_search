@@ -7,9 +7,14 @@
         width: 250px;
         height: 200px;
 
+        position: relative;
+
         [data-attribute='hero'] {
             width: 100%;
             height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         &.loading {
