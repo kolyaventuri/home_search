@@ -24,7 +24,8 @@ export default class Photo extends React.Component {
         const listingStyle = {
             backgroundImage: 'url(' + this.state.hero + ')',
             backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat'
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center center'
         };
 
         return (
