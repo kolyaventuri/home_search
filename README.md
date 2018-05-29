@@ -1,5 +1,8 @@
 # Lifestyle Home Search
 
+## Running Server
+For development, spin up the server with `foreman start -f Procfile.dev` to make sure that webpack debug info is coming through
+
 ## Spark Platform Keys
 Your Spark Platform API keys can by creating a `config/application.yml` file.
 Please set two variables `SPARK_API_KEY` and `SPARK_SECRET` equal to your Spark Platform API key and secret.
