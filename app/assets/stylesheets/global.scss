@@ -2,13 +2,15 @@
 
 form.search {
     .field {
-        position: relative;
+        position: absolute;
         top:50%;
         transform: translateY(-50%);
-    }
+        width: 100%;
+
         .control {
-          width: 100% !important;
+            width: 100%;
         }
+    }
 }
 
 #featuredHomes {
@@ -52,6 +54,10 @@ form.search {
         &.loading {
             .hero {
                 @include loadingIndefinite;
+            }
+
+            .info {
+                display: none;
             }
         }
     }
