@@ -9,6 +9,7 @@ class Home < ApplicationRecord
   validates_presence_of :garage_spaces
   validates_presence_of :lot_size
   validates_presence_of :sqft
+  validates_presence_of :hero_shot
 
   def self.from_json(data)
     home = new
@@ -24,6 +25,7 @@ class Home < ApplicationRecord
     home.garage_spaces = standard_fields[:GarageSpaces]
     home.lot_size = standard_fields[:LotSizeAcres]
     home.sqft = standard_fields[:BuildingAreaTotal]
+    home.hero_shot = standard_fields[:Photos].first[:Uri640]
 
     home
   end
