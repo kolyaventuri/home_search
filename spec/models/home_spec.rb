@@ -11,6 +11,7 @@ describe Home, type: :model do
   it { is_expected.to validate_presence_of(:garage_spaces) }
   it { is_expected.to validate_presence_of(:lot_size) }
   it { is_expected.to validate_presence_of(:sqft) }
+  it { is_expected.to validate_presence_of(:hero_shot) }
 
   it 'should be able to load a home from JSON' do
     home_json = File.read('fixtures/home.json')
@@ -33,5 +34,6 @@ describe Home, type: :model do
     expect(home.garage_spaces).to eq(standard_fields[:GarageSpaces])
     expect(home.lot_size).to eq(standard_fields[:LotSizeAcres])
     expect(home.sqft).to eq(standard_fields[:BuildingAreaTotal])
+    expect(home.hero_shot).to eq(standard_fields[:Photos].first[:Uri640])
   end
 end
