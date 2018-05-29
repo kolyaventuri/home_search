@@ -1,5 +1,5 @@
 import React from 'react'
-import Price from './Price'
+import Price from './listing/Price'
 
 export default class Listing extends React.Component {
     constructor(props) {
