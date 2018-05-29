@@ -15,7 +15,7 @@
 
         position: relative;
 
-        [data-attribute='hero'] {
+        .hero {
             width: 100%;
             height: 100%;
             position: relative;
@@ -23,8 +23,23 @@
             left: 0;
         }
 
+        .info {
+            position: absolute;
+            left:0;
+            bottom:0;
+            padding: 0.5em;
+
+            .address {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+
+            .price {
+                font-weight: bold;
+            }
+        }
         &.loading {
-            [data-attribute='hero'] {
+            .hero {
                 @include loadingIndefinite;
             }
         }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Price from './Price'
 
 const Listing = ({ hero, address, price }) => {
     const listingStyle = {
@@ -9,9 +10,11 @@ const Listing = ({ hero, address, price }) => {
 
     return (
         <div className={'column is-narrow is-one-quarter home ' + (address ? '': 'loading')}>
-            <div data-attribute="hero" style={address ? listingStyle : {}}></div>
-            <p data-attribute="address">{ address }</p>
-            <p data-attribute="price">{ price }</p>
+            <div className="hero" style={address ? listingStyle : {}}></div>
+            <div className='info'>
+                <p className="address">{ address }</p>
+                <Price value={ price } />
+            </div>
         </div>
    );
 };
