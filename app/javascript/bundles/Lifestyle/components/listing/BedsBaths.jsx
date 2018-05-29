@@ -5,7 +5,7 @@ import Garage from './items/Garage'
 
 const BedsBaths = ({ beds, baths, garage }) => {
     return (
-        <div className='column is-narrow is-three-quarters columns'>
+        <div className='column is-narrow is-half columns'>
             <div className='column'>
                 <div className='info'>
                     <Beds>{ beds }</Beds>
