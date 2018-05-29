@@ -8,13 +8,20 @@ export default class ListingCards extends React.Component {
 
         this.state = {
             loading: true,
-            listings: []
+            listings: new Array(10).fill({})
         };
+    }
+
+    componentDidMount() {
+        this.loadListings();
+    }
+
+    loadListings() {
     }
 
     render() {
         return (
-          <div>
+          <div className='columns is-multiline is-centered'>
             { this.state.listings.map(data => (
                 <ListingCard {...data} />
             ))}
