@@ -11,7 +11,6 @@ describe Home, type: :model do
   it { is_expected.to validate_presence_of(:garage_spaces) }
   it { is_expected.to validate_presence_of(:lot_size) }
   it { is_expected.to validate_presence_of(:sqft) }
-  it { is_expected.to validate_presence_of(:hero_shot) }
 
   it 'should be able to load a home from JSON' do
     home_json = File.read('fixtures/home.json')
