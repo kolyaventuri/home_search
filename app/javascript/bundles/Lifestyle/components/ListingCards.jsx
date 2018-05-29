@@ -21,7 +21,7 @@ export default class ListingCards extends React.Component {
         }).then(json => {
             let listings = json.map(home => {
                 return {
-                    hero: home.hero_image,
+                    hero: home.hero_shot,
                     address: home.first_line_address,
                     price: home.list_price
                 }
