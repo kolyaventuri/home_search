@@ -1,5 +1,16 @@
 @import "animations/_loading";
 
+form.search {
+    .field {
+        position: relative;
+        top:50%;
+        transform: translateY(-50%);
+    }
+        .control {
+          width: 100% !important;
+        }
+}
+
 #featuredHomes {
 
     .home {
