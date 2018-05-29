@@ -34,5 +34,6 @@ describe Home, type: :model do
     expect(home.lot_size).to eq(standard_fields[:LotSizeAcres])
     expect(home.sqft).to eq(standard_fields[:BuildingAreaTotal])
     expect(home.hero_shot).to eq(standard_fields[:Photos].first[:Uri640])
+    expect(home.hero_shot_small).to eq(standard_fields[:Photos].first[:UriThumb])
   end
 end

@@ -13,6 +13,7 @@ class Home < ApplicationRecord
   def self.from_json(data)
     home = new
     standard_fields = data[:StandardFields]
+
     home.spark_id = data[:Id]
     home.mls_id = standard_fields[:ListingId]
     home.list_price = standard_fields[:ListPrice]
@@ -23,7 +24,10 @@ class Home < ApplicationRecord
     home.garage_spaces = standard_fields[:GarageSpaces]
     home.lot_size = standard_fields[:LotSizeAcres]
     home.sqft = standard_fields[:BuildingAreaTotal]
-    home.hero_shot = standard_fields[:Photos].first[:Uri640] unless standard_fields[:Photos].empty?
+    unless standard_fields[:Photos].empty?
+      home.hero_shot = standard_fields[:Photos].first[:Uri640]
+      home.hero_shot_small = standard_fields[:Photos].first[:UriThumb]
+    end
 
     home
   end
