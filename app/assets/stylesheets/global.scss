@@ -1,18 +1,24 @@
 @import "animations/_loading";
 
 #featuredHomes {
+
     .home {
         color: #FFF;
 
-        width: 250px;
         height: 200px;
+
+        background: #FFF;
+        padding: 0.25em;
+        margin: 0.25em;
+
+        border-radius: 5px;
 
         position: relative;
 
         [data-attribute='hero'] {
             width: 100%;
             height: 100%;
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
         }

@@ -32,12 +32,9 @@ export default class ListingCards extends React.Component {
     }
 
     render() {
-        return (
-          <div className='columns is-multiline is-centered'>
-            { this.state.listings.map(data => (
-                <ListingCard {...data} />
-            ))}
-          </div>
-        );
+        return this.state.listings.map(data => {
+            let key = Math.random().toString(36);
+            return (<ListingCard {...data} key={key} />);
+        });
     }
 }
