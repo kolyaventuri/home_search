@@ -15,6 +15,7 @@ class SparkService
     filter = build_filter(params)
     opts = {
       _filter: filter,
+      _limit: 25,
       _pagination: 1,
       _expand: 'PrimaryPhoto',
       _page: params[:page] || 1
