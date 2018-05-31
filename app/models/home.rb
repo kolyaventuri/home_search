@@ -1,4 +1,5 @@
-class Home < ApplicationRecord
+class Home
+  include Mongoid::Document
   validates_presence_of :spark_id
   validates_presence_of :mls_id
   validates_presence_of :list_price
