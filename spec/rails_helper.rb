@@ -33,7 +33,6 @@ require 'vcr'
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   # Ensure that if we are running js tests, we are using latest webpack assets
@@ -67,7 +66,7 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  DatabaseCleaner.strategy = :truncation
+  DatabaseCleaner[:mongoid].strategy = :truncation
 
   RSpec.configure do |c|
     c.before(:each) do
@@ -78,15 +77,6 @@ RSpec.configure do |config|
       DatabaseCleaner.clean
     end
     c.include Capybara::DSL
-  end
-
-  Shoulda::Matchers.configure do |c|
-    c.integrate do |with|
-      # Choose a test framework:
-      with.test_framework :rspec
-      # Or, choose the following (which implies all of the above):
-      with.library :rails
-    end
   end
 
   VCR.configure do |c|
