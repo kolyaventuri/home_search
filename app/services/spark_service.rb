@@ -11,7 +11,7 @@ class SparkService
     end
   end
 
-  def self.search(params)
+  def self.search(params={})
     filter = build_filter(params)
     opts = {
       _filter: filter,
