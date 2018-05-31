@@ -167,7 +167,6 @@ production:
   clients:
     default:
       uri: <%= ENV['MONGODB_URI'] %>
-      database: lifestyle
       options:
         read:
           mode: :primary
