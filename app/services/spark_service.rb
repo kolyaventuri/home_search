@@ -15,6 +15,7 @@ class SparkService
     filter = build_filter(params)
     opts = {
       _filter: filter,
+      _limit: 25,
       _pagination: 1,
       _expand: 'PrimaryPhoto',
       _page: params[:page] || 1
@@ -32,7 +33,7 @@ class SparkService
   end
 
   def self.build_filter(params)
-    filters = []
+    filters = ["PropertyType Eq 'A' Or PropertyType Eq 'C'"]
     params.each do |key, value|
       case key
       when 'zip'
