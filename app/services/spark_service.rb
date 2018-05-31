@@ -7,7 +7,7 @@ class SparkService
     homes = make_request('/listings', opts)
 
     homes.map do |home|
-      Home.from_json(home.deep_symbolize_keys)
+      Home.from_json(home.deep_symbolize_keys).serialize
     end
   end
 
@@ -23,7 +23,7 @@ class SparkService
 
     results = make_request('/listings', opts)
     homes = results.map do |home|
-      Home.from_json(home.deep_symbolize_keys)
+      Home.from_json(home.deep_symbolize_keys).serialize
     end
 
     {

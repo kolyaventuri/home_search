@@ -5,6 +5,10 @@ class Home < ApplicationRecord
   field :Id
   validates_uniqueness_of :Id
 
+  def serialize
+    HomeSerializer.new(self).serializable_hash[:data][:attributes]
+  end
+
   def self.from_json(json)
     home = create
     home.write_attributes(json)

@@ -3,7 +3,6 @@ require_relative 'boot'
 #require 'rails/all'
 require "action_controller/railtie"
 require "action_mailer/railtie"
-#require "active_resource/railtie" # Comment this line for Rails 4.0+
 require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
