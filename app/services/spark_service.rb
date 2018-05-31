@@ -32,7 +32,7 @@ class SparkService
   end
 
   def self.build_filter(params)
-    filters = []
+    filters = ["PropertyType Eq 'A' Or PropertyType Eq 'C'"]
     params.each do |key, value|
       case key
       when 'zip'
