@@ -79,15 +79,6 @@ RSpec.configure do |config|
     c.include Capybara::DSL
   end
 
-  Shoulda::Matchers.configure do |c|
-    c.integrate do |with|
-      # Choose a test framework:
-      with.test_framework :rspec
-      # Or, choose the following (which implies all of the above):
-      with.library :rails
-    end
-  end
-
   VCR.configure do |c|
     c.cassette_library_dir = "fixtures/vcr_cassettes"
     c.hook_into :webmock
