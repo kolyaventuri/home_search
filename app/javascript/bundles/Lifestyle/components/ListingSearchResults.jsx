@@ -43,11 +43,33 @@ export default class ListingSearchResults extends React.Component {
         }
     }
 
+    queryify(query) {
+        let isZip = /^\b\d{5}(-\d{4})?\b$/.test(query);
+        let queryParams = {};
+        if(isZip) {
+            queryParams['zip'] = query;
+        } else {
+            queryParams['address'] = query;
+        }
+
+        query = window.location.search.substr(1);
+        query.split("&").forEach(function(part) {
+            var item = part.split("=");
+            if(item[1].length < 1) return;
+            queryParams[item[0]] = decodeURIComponent(item[1]);
+        });
+        delete queryParams['q'];
+        return Object.keys(queryParams).map(param => {
+            return `${encodeURIComponent(param)}=${encodeURIComponent(queryParams[param])}`
+        }).join('&');
+    }
+
     loadListings() {
-        let zip = window['_home_search_q'];
         let page = this.state.pagination.currentPage + 1;
 
-        fetch('/api/v1/homes/search?zip=' + zip + '&page=' + page).then(response => {
+        let query = this.queryify(window['_home_search_q']);
+
+        fetch('/api/v1/homes/search?' + query + '&page=' + page).then(response => {
             return response.json();
         }).then(json => {
             let listings = json.results.map(home => {

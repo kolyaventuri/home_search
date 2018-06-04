@@ -30,16 +30,16 @@ class SearchService
 
     params.each_pair do |param, value|
       next if map[param].nil?
-
       name = map[param].first
       comparison = map[param][1]
       modifier = map[param][2]
 
-      name = name.send(modifier) unless modifier.nil?
+      value = value.send(modifier) unless modifier.nil?
+      value = /.*#{value}.*/i if comparison == '$regex'
 
       query_hash["#{prefix}#{name}"] = { comparison.to_sym => value }
     end
-
+    
     query_hash
   end
 
@@ -48,14 +48,15 @@ class SearchService
   def map
     {
       "zip" => ['PostalCode', "$eq", :to_s],
-      "minPrice" => ['ListPrice', "$gte"],
-      "maxPrice" => ['ListPrice', "$lte"],
-      "minBaths" => ['BathsTotal', "$gte"],
-      "maxBaths" => ['BathsTotal', "$lte"],
-      "minSqft" => ['BuildingAreaTotal', "$gte"],
-      "maxSqft" => ['BuildingAreaTotal', "$lte"],
-      "minBeds" => ['BedsTotal', "$gte"],
-      "maxBeds" => ['BedsTotal', "$lte"]
+      "address" => ['UnparsedAddress', '$regex'],
+      "minPrice" => ['ListPrice', "$gte", :to_i],
+      "maxPrice" => ['ListPrice', "$lte", :to_i],
+      "minBaths" => ['BathsTotal', "$gte", :to_i],
+      "maxBaths" => ['BathsTotal', "$lte", :to_i],
+      "minSqft" => ['BuildingAreaTotal', "$gte", :to_i],
+      "maxSqft" => ['BuildingAreaTotal', "$lte", :to_i],
+      "minBeds" => ['BedsTotal', "$gte", :to_i],
+      "maxBeds" => ['BedsTotal', "$lte", :to_i]
     }
   end
 end
