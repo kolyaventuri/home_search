@@ -1,6 +1,6 @@
 class Api::V1::Homes::SearchController < ApplicationController
   def index
-    render json: SparkService.search(search_params)
+    render json: SearchService.search(search_params)
   end
 
   private
