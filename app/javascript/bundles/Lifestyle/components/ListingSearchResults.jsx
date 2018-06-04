@@ -35,6 +35,10 @@ export default class ListingSearchResults extends React.Component {
         let bottom = last.getBoundingClientRect().bottom;
 
         if(bottom < window.innerHeight) {
+            this.setState({
+                loading: true,
+                listings: this.state.listings.concat(new Array(25).fill({}))
+            });
             this.loadListings();
         }
     }
@@ -62,9 +66,16 @@ export default class ListingSearchResults extends React.Component {
             this.setState((prevState) => {
                 let newListings = prevState;
                 let point = 25 * this.state.pagination.currentPage;
+                let nextPoint = point + 25;
+
                 for(let listing of listings) {
                     newListings.listings[point++] = listing;
                 }
+
+                for(let i = point; point < nextPoint; point++) {
+                    delete newListings.listings[point];
+                }
+
                 return {
                     listings: newListings.listings,
                     loading: false,
