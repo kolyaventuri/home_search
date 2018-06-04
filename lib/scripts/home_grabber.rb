@@ -1,4 +1,6 @@
-require './app/services/spark_service'
+# require './app/services/spark_service'
+# require './app/models/home'
+require File.expand_path('../../../config/environment',  __FILE__)
 
 class HomeGrabber
   def initialize
@@ -7,6 +9,8 @@ class HomeGrabber
   end
 
   def run(num=nil)
+    Home.collection.drop
+
     if num.nil?
       @num = nil
     else

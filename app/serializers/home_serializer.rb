@@ -22,7 +22,7 @@ class HomeSerializer
   attribute :hero_shot do |object|
     begin
       object.StandardFields[:Photos].first[:Uri640]
-    rescue(e)
+    rescue
       nil
     end
   end
@@ -31,7 +31,7 @@ class HomeSerializer
   attribute :hero_shot_small do |object|
     begin
       object.StandardFields[:Photos].first[:UriThumb]
-    rescue(e)
+    rescue
       nil
     end
   end
