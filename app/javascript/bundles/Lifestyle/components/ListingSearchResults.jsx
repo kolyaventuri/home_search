@@ -52,6 +52,13 @@ export default class ListingSearchResults extends React.Component {
             queryParams['address'] = query;
         }
 
+        query = window.location.search.substr(1);
+        query.split("&").forEach(function(part) {
+            var item = part.split("=");
+            if(item[1].length < 1) return;
+            queryParams[item[0]] = decodeURIComponent(item[1]);
+        });
+        delete queryParams['q'];
         return Object.keys(queryParams).map(param => {
             return `${encodeURIComponent(param)}=${encodeURIComponent(queryParams[param])}`
         }).join('&');
