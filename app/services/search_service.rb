@@ -36,6 +36,7 @@ class SearchService
       modifier = map[param][2]
 
       name = name.send(modifier) unless modifier.nil?
+      value = /.*#{value}.*/i if comparison == '$regex'
 
       query_hash["#{prefix}#{name}"] = { comparison.to_sym => value }
     end
@@ -48,6 +49,7 @@ class SearchService
   def map
     {
       "zip" => ['PostalCode', "$eq", :to_s],
+      "address" => ['UnparsedAddress', '$regex'],
       "minPrice" => ['ListPrice', "$gte"],
       "maxPrice" => ['ListPrice', "$lte"],
       "minBaths" => ['BathsTotal', "$gte"],

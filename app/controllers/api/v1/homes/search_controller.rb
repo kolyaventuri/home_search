@@ -9,6 +9,7 @@ class Api::V1::Homes::SearchController < ApplicationController
     params.permit(
       :page,
       :zip,
+      :address,
       :minPrice,
       :maxPrice,
       :minBaths,
