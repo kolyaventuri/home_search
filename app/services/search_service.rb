@@ -1,7 +1,6 @@
 class SearchService
   def self.search(params)
     query = new.map_params(params)
-    binding.pry
   end
 
   def map_params(params)
