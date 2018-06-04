@@ -2,12 +2,18 @@ class SearchService
   def self.search(params)
     query = new.map_params(params)
 
-    results = Home.where(query).map do |home|
+    homes = Home.page(params[:page].to_i || 1).where(query)
+    results = homes.map do |home|
       HomeSerializer.new(home).serializable_hash[:data][:attributes]
     end
 
     {
-      results: results
+      results: results,
+      pagination: {
+        currentPage: homes.current_page,
+        totalPages: homes.total_pages,
+        count: homes.count
+      }
     }
   end
 
