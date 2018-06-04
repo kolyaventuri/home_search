@@ -7,17 +7,43 @@ export default class ListingSearchResults extends React.Component {
         super(props);
 
         this.state = {
-            listings: new Array(10).fill({})
+            listings: new Array(25).fill({}),
+            pagination: {currentPage: 0, totalPages: null},
+            loading: true
         };
+
+        window.addEventListener('scroll', (e) => {
+        });
     }
 
     componentDidMount() {
+        window.addEventListener('scroll', this.onScroll, false);
         this.loadListings();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+
+    onScroll = () => {
+        if(this.state.pagination.currentPage >= this.state.pagination.totalPages) return;
+        if(this.state.loading) return;
+
+        let homes = document.querySelectorAll('.home');
+
+        let last = homes[homes.length - 1];
+        let bottom = last.getBoundingClientRect().bottom;
+
+        if(bottom < window.innerHeight) {
+            this.loadListings();
+        }
     }
 
     loadListings() {
         let zip = window['_home_search_q'];
-        fetch('/api/v1/homes/search?zip=' + zip).then(response => {
+        let page = this.state.pagination.currentPage + 1;
+
+        fetch('/api/v1/homes/search?zip=' + zip + '&page=' + page).then(response => {
             return response.json();
         }).then(json => {
             let listings = json.results.map(home => {
@@ -33,8 +59,18 @@ export default class ListingSearchResults extends React.Component {
                     lot_size: home.lot_size
                 }
             });
-
-            this.setState({ listings });
+            this.setState((prevState) => {
+                let newListings = prevState;
+                let point = 25 * this.state.pagination.currentPage;
+                for(let listing of listings) {
+                    newListings.listings[point++] = listing;
+                }
+                return {
+                    listings: newListings.listings,
+                    loading: false,
+                    pagination: json.pagination
+                };
+            });
         });
     }
 
