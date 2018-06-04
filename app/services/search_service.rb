@@ -1,6 +1,14 @@
 class SearchService
   def self.search(params)
     query = new.map_params(params)
+
+    results = Home.where(query).map do |home|
+      HomeSerializer.new(home).serializable_hash[:data][:attributes]
+    end
+
+    {
+      results: results
+    }
   end
 
   def map_params(params)
