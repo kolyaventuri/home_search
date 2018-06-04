@@ -42,6 +42,7 @@ gem 'react_on_rails'
 gem 'webpacker'
 
 gem 'mongoid'
+gem 'kaminari-mongoid'
 gem 'fast_jsonapi'
 
 group :development, :test do
