@@ -8,14 +8,7 @@ section.hero.is-info.is-medium.is-bold
           h1.title Lifestyle.
           h2.subtitle Home search, reimagined
         .column.is-two-thirds
-          = form_tag '/search', method: :get, class: 'search'
-            .field.has-addons
-              .control
-                = text_field_tag 'q', nil, placeholder: 'Enter a zip code or street address . . . ', class: 'input'
-              .control
-                a.button.is-primary.searchBtn
-                  | Search
-
+          = render partial: 'partials/search_form'
 
 section.container
   .columns.is-multiline.is-centered#featuredHomes

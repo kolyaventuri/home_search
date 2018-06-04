@@ -1,0 +1,77 @@
+= form_tag '/search', method: :get, class: 'search'
+  .field.has-addons
+    .control.is-expanded
+      = text_field_tag 'q', nil, placeholder: 'Enter a zip code or street address . . . ', class: 'input'
+    .control
+      a.button.is-primary.searchBtn
+        | Search
+  .columns.is-multiline
+    .column
+      .field.has-addons
+        .control
+          = select_tag 'minBaths', options_for_select(@nums), class: 'input'
+        .control
+          a.button.is-static
+            | Min Baths
+
+    .column
+      .field.has-addons
+        .control
+          = select_tag 'maxBaths', options_for_select(@nums), class: 'input'
+        .control
+          a.button.is-static
+            | Max Baths
+
+    .column
+      .field.has-addons
+        .control
+          = select_tag 'minBeds', options_for_select(@nums), class: 'input'
+        .control
+          a.button.is-static
+            | Min Beds
+
+    .column
+      .field.has-addons
+        .control
+          = select_tag 'maxBeds', options_for_select(@nums), class: 'input'
+        .control
+          a.button.is-static
+            | Max Beds
+  .columns.is-multiline
+    .column
+      .field.has-addons
+        .control
+          a.button.is-static
+            i.fa.far-dollar-sign
+        .control
+          = text_field_tag 'minPrice', nil, class: 'input'
+        .control
+          a.button.is-static
+            | Min Price
+
+    .column
+      .field.has-addons
+        .control
+          a.button.is-static
+            i.fa.far-dollar-sign
+        .control
+          = text_field_tag 'maxPrice', nil, class: 'input'
+        .control
+          a.button.is-static
+            | Max Price
+
+    .column
+      .field.has-addons
+        .control
+          = text_field_tag 'minSqft', nil, class: 'input'
+        .control
+          a.button.is-static
+            | Min Sqft
+
+    .column
+      .field.has-addons
+        .control
+          = text_field_tag 'maxSqft', nil, class: 'input'
+        .control
+          a.button.is-static
+            | Max Sqft
