@@ -1,5 +1,6 @@
 # require './app/services/spark_service'
 # require './app/models/home'
+
 require File.expand_path('../../../config/environment',  __FILE__)
 
 class HomeGrabber
