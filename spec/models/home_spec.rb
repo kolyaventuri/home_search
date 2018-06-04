@@ -26,4 +26,5 @@ describe Home, type: :model do
     home2 = Home.from_json(data)
     expect(home2).to_not be_valid
   end
+
 end

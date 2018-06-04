@@ -18,4 +18,22 @@ class HomeSerializer
       object.StandardFields[value]
     end
   end
+
+  attribute :hero_shot do |object|
+    begin
+      object.StandardFields[:Photos].first[:Uri640]
+    rescue(e)
+      nil
+    end
+  end
+
+
+  attribute :hero_shot_small do |object|
+    begin
+      object.StandardFields[:Photos].first[:UriThumb]
+    rescue(e)
+      nil
+    end
+  end
+
 end

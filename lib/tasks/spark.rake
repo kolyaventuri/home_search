@@ -1,3 +1,5 @@
+require './lib/scripts/home_grabber'
+
 namespace :spark do
   desc "Fetches homes from the Spark API and loads them into the database"
   task :pull, [:num] => [:environment] do |task, args|
@@ -5,9 +7,8 @@ namespace :spark do
     unless num.nil?
       puts "Fetching #{num} homes..."
     else
-      puts "Fetch all homes..."
+      puts "Fetching all homes..."
     end
-    puts 'TODO: Load homes'
+    HomeGrabber.new.run(num)
   end
-
 end
