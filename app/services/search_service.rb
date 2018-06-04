@@ -18,7 +18,7 @@ class SearchService
   end
 
   def self.featured
-    Home.sample(10).map do |home|
+    Home.sample(12).map do |home|
       HomeSerializer.new(home).serializable_hash[:data][:attributes]
     end
   end
