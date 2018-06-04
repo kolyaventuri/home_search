@@ -17,6 +17,12 @@ class SearchService
     }
   end
 
+  def self.featured
+    Home.sample(10).map do |home|
+      HomeSerializer.new(home).serializable_hash[:data][:attributes]
+    end
+  end
+
   def map_params(params)
     query_hash = {}
     prefix = 'StandardFields.'

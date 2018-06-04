@@ -1,7 +1,7 @@
 class ApplicationRecord
   def self.sample(num=1)
     num = 1 if num < 1
-    self.collection.aggregate(
+    items = self.collection.aggregate(
       [
         {
           '$sample': {
@@ -9,6 +9,10 @@ class ApplicationRecord
           }
         }
       ]
-    )
+    ).map do |item|
+      item["_id"]
+    end
+
+    self.find(items)
   end
 end
