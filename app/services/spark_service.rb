@@ -35,32 +35,29 @@ class SparkService
   def self.build_filter(params)
     filters = ["PropertyType Eq 'A' Or PropertyType Eq 'C'"]
     params.each do |key, value|
-      case key
-      when 'zip'
-        filters.push("PostalCode Eq '#{value}'")
-      when 'minPrice'
-        filters.push("ListPrice Ge #{value}")
-      when 'maxPrice'
-        filters.push("ListPrice Le #{value}")
-      when 'minBeds'
-        filters.push("BedsTotal Ge #{value}")
-      when 'maxBeds'
-        filters.push("BedsTotal Le #{value}")
-      when 'minBaths'
-        filters.push("BathsTotal Ge #{value}")
-      when 'maxBaths'
-        filters.push("BathsTotal Le #{value}")
-      when 'minSqft'
-        filters.push("BuildingAreaTotal Ge #{value}")
-      when 'maxSqft'
-        filters.push("BuildingAreaTotal Le #{value}")
-      end
+      type = filter_types[key]
+      value = "'#{value}'" if key == 'zip'
+      filters.push("#{type} #{value}") unless type.nil?
     end
 
     filters.join(' And ')
   end
-  
+
   private
+
+  def self.filter_types
+    {
+      'zip' => 'PostalCode Eq',
+      'minPrice' => 'ListPrice Ge',
+      'maxPrice' => 'ListPrice Le',
+      'minBeds' => 'BedsTotal Ge',
+      'maxBeds' => 'BedsTotal Le',
+      'minBaths' => 'BathsTotal Ge',
+      'maxBaths' => 'BathsTotal Le',
+      'minSqft' => 'BuildingAreaTotal Ge',
+      'maxSqft' => 'BuildingAreaTotal Le'
+    }
+  end
 
   def self.make_request(endpoint, opts=nil)
     SparkApi.configure do |config|
