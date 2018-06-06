@@ -9,18 +9,4 @@ describe YelpService, type: :service do
       expect(results[:businesses]).to be_an Array
     end
   end
-
-  it 'should be able to get an average lat/long for a given list of locations' do
-    data = File.read('./fixtures/yelp.json')
-    json = JSON.parse(data, symbolize_names: true)
-
-    result = YelpService.calculate_midpoint(json)
-
-    expected = {
-      latitude: 35.16336319884125,
-      longitude: -106.6222967196353
-    }
-
-    expect(result).to eq(expected)
-  end
 end
