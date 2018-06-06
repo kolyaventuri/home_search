@@ -4,7 +4,10 @@ section.hero.is-info.is-bold
   .hero-body
     .container
       h1.title
-        | Homes in #{params[:q]}
+        - if params[:q]
+          | Homes in #{params[:q]}
+        - else
+          | Your customized home search
 
 section.container#homes
 
