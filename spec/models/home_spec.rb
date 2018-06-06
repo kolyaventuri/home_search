@@ -30,7 +30,7 @@ describe Home, type: :model do
   it 'should have a geocoded location' do
     home = Home.from_json(data)
 
-    expect(home.location).to eq([data[:StandardFields][:Latitude], data[:StandardFields][:Longitude]])
+    expect(home.location).to eq([data[:StandardFields][:Longitude], data[:StandardFields][:Latitude]])
   end
 
 end
