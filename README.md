@@ -22,3 +22,8 @@ Required fixture data:
 
 * `/fixutres/home.json` - Representing a single home 
 * `/fixtures/yelp.json` - Representing a Yelp API request to `/v3/businesses/search?location= . . .`
+
+## Todo
+* Improve recommendation engine
+  * Right now it works, but it is a rudimentary proof of concept based on location data
+* Update forms to use React components
