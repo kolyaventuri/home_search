@@ -5,10 +5,14 @@ class LocationService
       business[:coordinates].values
     end
 
-    calculate_midpoint(coords)
+    new.calculate_midpoint(coords)
   end
 
-  def self.calculate_midpoint(coords)
+  def self.midpoint(points)
+    new.calculate_midpoint(points.map(&:values))
+  end
+
+  def calculate_midpoint(coords)
     {
       latitude: coords.map(&:first).sum / coords.length,
       longitude: coords.map(&:last).sum / coords.length
