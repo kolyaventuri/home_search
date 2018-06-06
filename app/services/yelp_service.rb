@@ -15,6 +15,19 @@ class YelpService
     parse_response(response.body)
   end
 
+  def self.businesses(location, category, limit=50)
+    Rails.cache.fetch("#{location}_#{category}") do
+      new.make_request(
+        '/v3/businesses/search',
+        {
+          location: location,
+          categories: category,
+          limit: limit
+        }
+      )
+    end
+  end
+
   private
 
   def build_request
