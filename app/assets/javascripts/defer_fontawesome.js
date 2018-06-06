@@ -8,11 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return tag;
     };
 
-    var styles = ['regular', 'brands', 'fontawesome'];
+    var styles = ['all'];
     var integrities = [
-        'sha384-HLkkol/uuRVQDnHaAwidOxb1uCbd78FoGV/teF8vONYKRP9oPQcBZKFdi3LYDy/C',
-        'sha384-t3MQUMU0g3tY/0O/50ja6YVaEFYwPpOiPbrHk9p5DmYtkHJU2U1/ujNhYruOJwcj',
-        'sha384-LDuQaX4rOgqi4rbWCyWj3XVBlgDzuxGy/E6vWN6U7c25/eSJIwyKhy9WgZCHQWXz'
+      'sha384-oi8o31xSQq8S0RpBcb4FaLB8LJi9AT8oIdmS1QldR8Ui7KUQjNAnDlJjp55Ba8FG',
     ];
 
     var header = document.head;
