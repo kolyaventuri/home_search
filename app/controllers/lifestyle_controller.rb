@@ -5,9 +5,14 @@ class LifestyleController < ApplicationController
   end
 
   def create
-    q = JSON.parse(session[:search_params])['q']
+    params = JSON.parse(session[:search_params])
+    midpoint = RecommendationService.find_midpoint(params['q'], ranking_params)
 
+    params.delete('q')
+    params['location'] = midpoint.values.join(',')
+    params['radius'] = 25
 
+    redirect_to "#{search_path}?#{params.to_query}"
   end
 
   private
@@ -35,10 +40,7 @@ class LifestyleController < ApplicationController
 
   def search_params
     params.permit(
-      :page,
-      :location,
-      :radius,
-      :zip,
+      :q,
       :address,
       :minPrice,
       :maxPrice,
