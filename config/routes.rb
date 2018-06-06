@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/search', to: 'search#index'
   post '/lifestyle', to: 'lifestyle#index'
+  post '/lifestyle/search', to: 'lifestyle#create'
 
   get '/favorites', to: 'favorites#index'
 
