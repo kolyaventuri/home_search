@@ -14,4 +14,28 @@ describe LocationService, type: :service do
 
     expect(result).to eq(expected)
   end
+
+  it 'should be able to generically calculate the average of a hash of coordinates' do
+    points = [
+      {
+        latitude: 1,
+        longitude: 2
+      },
+      {
+        latitude: 3,
+        longitude: 4
+      },
+      {
+        latitude: 5,
+        longitude: 6
+      }
+    ]
+
+    expected = {
+      latitude: 3,
+      longitude: 4
+    }
+
+    expect(LocationService.midpoint(points)).to eq(expected)
+  end
 end

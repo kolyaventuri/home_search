@@ -24,7 +24,31 @@ class SearchService
     end
   end
 
+  def geo_within_params(long, lat, radius)
+    location = [[long, lat], radius / 3963.2]
+
+    {
+      location: {
+        '$geoWithin' => {
+          '$centerSphere' => location
+        }
+      }
+    }
+  end
+
   def map_params(params)
+    if params[:location] and params[:radius]
+      lat,long = params[:location].split(',').map(&:to_i)
+      unless (-90..90).include?(lat)
+        tmp  = lat
+        lat  = long
+        long = tmp
+      end
+
+      if (-90..90).include?(lat) and (-180..180).include?(long)
+        return geo_within_params(long, lat, params[:radius].to_i)
+      end
+    end
     query_hash = {}
     prefix = 'StandardFields.'
 
@@ -40,7 +64,7 @@ class SearchService
 
       query_hash["#{prefix}#{name}"] = { comparison.to_sym => value }
     end
-    
+
     query_hash
   end
 

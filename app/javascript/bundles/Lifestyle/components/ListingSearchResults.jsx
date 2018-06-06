@@ -48,6 +48,8 @@ export default class ListingSearchResults extends React.Component {
         let queryParams = {};
         if(isZip) {
             queryParams['zip'] = query;
+        } else if(query.split(',').length == 2) {
+            queryParams['location'] = query;
         } else {
             queryParams['address'] = query;
         }
