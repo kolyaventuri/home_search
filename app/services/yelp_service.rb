@@ -2,6 +2,8 @@ class YelpService
   BASE_URL = 'https://api.yelp.com/'
 
   def make_request(endpoint, params={})
+    params[:sort_by] = 'rating'
+
     request = build_request
     response = request.get nil, params do |req|
       req.url endpoint
