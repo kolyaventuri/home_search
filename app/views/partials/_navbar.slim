@@ -20,3 +20,4 @@ nav.navbar.is-transparent
               | Sign in with Google
         - else
           p Welcome, #{current_user['info']['name']}
+          = link_to 'Logout', logout_path, class: 'button'
