@@ -3,6 +3,7 @@ class SearchService
     query = new.map_params(params)
 
     homes = Home.page(params[:page].to_i || 1).where(query)
+
     results = homes.map do |home|
       HomeSerializer.new(home).serializable_hash[:data][:attributes]
     end

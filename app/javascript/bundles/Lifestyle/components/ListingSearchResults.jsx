@@ -82,7 +82,9 @@ export default class ListingSearchResults extends React.Component {
                     beds: home.total_beds,
                     garage: home.garage_spaces,
                     sqft: home.sqft,
-                    lot_size: home.lot_size
+                    lot_size: home.lot_size,
+
+                    favorited: home.favorited
                 }
             });
             this.setState((prevState) => {
