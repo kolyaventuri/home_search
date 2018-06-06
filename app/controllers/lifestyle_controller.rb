@@ -6,6 +6,8 @@ class LifestyleController < ApplicationController
 
   def create
     q = JSON.parse(session[:search_params])['q']
+
+
   end
 
   private
