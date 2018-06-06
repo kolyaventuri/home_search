@@ -69,7 +69,7 @@ export default class ListingSearchResults extends React.Component {
 
         let query = this.queryify(window['_home_search_q']);
 
-        fetch('/api/v1/homes/search?' + query + '&page=' + page).then(response => {
+        fetch('/api/v1/homes/search?' + query + '&page=' + page, {credentials: 'same-origin'}).then(response => {
             return response.json();
         }).then(json => {
             let listings = json.results.map(home => {
@@ -84,7 +84,7 @@ export default class ListingSearchResults extends React.Component {
                     sqft: home.sqft,
                     lot_size: home.lot_size,
 
-                    favorited: home.favorited
+                    favorited: home.favorite
                 }
             });
             this.setState((prevState) => {
