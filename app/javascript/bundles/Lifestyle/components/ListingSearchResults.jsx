@@ -21,7 +21,7 @@ export default class ListingSearchResults extends React.Component {
         this.loadListings();
     }
 
-    componentWillUnmount() {
+    componentWillUmount() {
         window.removeEventListener('scroll', this.onScroll, false);
     }
 
