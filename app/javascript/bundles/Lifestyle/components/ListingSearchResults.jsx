@@ -74,6 +74,7 @@ export default class ListingSearchResults extends React.Component {
         }).then(json => {
             let listings = json.results.map(home => {
                 return {
+                    id: home.mls_id,
                     hero_small: home.hero_shot_small,
                     hero: home.hero_shot,
                     address: home.first_line_address,

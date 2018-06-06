@@ -8,7 +8,7 @@ import Favorite from './listing/Favorite'
 const Listing = (props) => {
     return (
         <div className={'column is-narrow home columns ' + (props.address ? '': 'loading')}>
-            <Favorite favorited={ props.favorited } />
+            <Favorite favorited={ props.favorited } id={ props.id } />
             <ListingPhoto { ...props } />
             <ListingInfo { ...props } />
         </div>
