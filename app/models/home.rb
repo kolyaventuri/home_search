@@ -5,6 +5,9 @@ class Home < ApplicationRecord
   field :Id
   validates_uniqueness_of :Id
 
+  field :location, type: Array
+  index({ location: "2d" }, { min: -200, max: 200 })
+
   def serialize
     HomeSerializer.new(self).serializable_hash[:data][:attributes]
   end
