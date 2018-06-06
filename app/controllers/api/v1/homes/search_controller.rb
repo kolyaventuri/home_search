@@ -19,6 +19,8 @@ class Api::V1::Homes::SearchController < ApplicationController
   def search_params
     params.permit(
       :page,
+      :location,
+      :radius,
       :zip,
       :address,
       :minPrice,
