@@ -11,13 +11,23 @@ nav.navbar.is-transparent
       a.navbar-item href="/"
         | Home
     .navbar-end
-      .navbar-item
-        - unless current_user
+      - unless current_user
+        .navbar-item
           a.button.is-danger.is-inverted href=google_login_path
             span.icon
               i.fab.fa-google
             span
               | Sign in with Google
-        - else
-          p Welcome, #{current_user['info']['name']}
-          = link_to 'Logout', logout_path, class: 'button'
+      - else
+        .navbar-item.has-dropdown.is-hoverable
+          a.navbar-link Welcome, #{current_user['info']['name']}
+          .navbar-dropdown.is-right.has-text-grey
+            a.navbar-item href=favorites_path
+              span.icon.is-small
+                i.far.fa-star
+              span &nbsp;Favorite Homes
+            hr.navbar-divider
+            a.navbar-item href=logout_path
+              span.icon.is-small
+                i.far.fa-sign-out
+              span &nbsp;Logout
