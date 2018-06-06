@@ -1,9 +1,21 @@
 class Api::V1::Homes::FavoritesController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :require_user
+
+  def index
+    favorites = current_user.homes
+
+    favorites = favorites.map do |home|
+      home = HomeSerializer.new(home).serializable_hash[:data][:attributes]
+      home.delete(:id)
+      home[:favorite] = true
+      home
+    end
+
+    render json: favorites
+  end
 
   def update
-    return render json: { success: false }, status: 401 unless current_user
-
     home = Home.find_by('StandardFields.ListingId': params[:id])
     return render json: { success: false } unless home
 
@@ -16,5 +28,11 @@ class Api::V1::Homes::FavoritesController < ApplicationController
     end
 
     render json: { success: true, favorited: result }
+  end
+
+  private
+
+  def require_user
+    render json: { success: false }, status: 401 and return false unless current_user
   end
 end
