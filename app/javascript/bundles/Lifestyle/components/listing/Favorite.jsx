@@ -15,7 +15,6 @@ export default class Favorite extends React.Component {
             return response.json();
         })
         .then(data => {
-            console.log(data);
             if(!data.success) return;
             this.setState((prevState) => {
                 return {
