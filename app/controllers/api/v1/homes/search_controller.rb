@@ -1,6 +1,15 @@
 class Api::V1::Homes::SearchController < ApplicationController
   def index
-    render json: SearchService.search(search_params)
+    search_results = SearchService.search(search_params)
+    home_ids = current_user.home_ids.map(&:to_s)
+
+    search_results[:results].map! do |home|
+      home[:favorite] = home_ids.include?(home[:id].to_s) if current_user
+      home.delete(:id)
+      home
+    end
+
+    render json: search_results
   end
 
   private

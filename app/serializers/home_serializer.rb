@@ -1,6 +1,8 @@
 class HomeSerializer
   include FastJsonapi::ObjectSerializer
 
+  attribute :id
+
   attribute_map = {
     list_price: :ListPrice,
     mls_id: :ListingId,

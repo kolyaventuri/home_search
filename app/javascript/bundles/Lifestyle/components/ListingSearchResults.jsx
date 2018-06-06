@@ -69,11 +69,12 @@ export default class ListingSearchResults extends React.Component {
 
         let query = this.queryify(window['_home_search_q']);
 
-        fetch('/api/v1/homes/search?' + query + '&page=' + page).then(response => {
+        fetch('/api/v1/homes/search?' + query + '&page=' + page, {credentials: 'same-origin'}).then(response => {
             return response.json();
         }).then(json => {
             let listings = json.results.map(home => {
                 return {
+                    id: home.mls_id,
                     hero_small: home.hero_shot_small,
                     hero: home.hero_shot,
                     address: home.first_line_address,
@@ -82,7 +83,9 @@ export default class ListingSearchResults extends React.Component {
                     beds: home.total_beds,
                     garage: home.garage_spaces,
                     sqft: home.sqft,
-                    lot_size: home.lot_size
+                    lot_size: home.lot_size,
+
+                    favorited: home.favorite
                 }
             });
             this.setState((prevState) => {
