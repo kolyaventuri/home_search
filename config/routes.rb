@@ -10,11 +10,15 @@ Rails.application.routes.draw do
 
   get '/search', to: 'search#index'
 
+  get '/favorites', to: 'favorites#index'
+
   namespace :api do
     namespace :v1 do
       namespace :homes do
         get '/featured', to: 'featured#index'
         get '/search', to: 'search#index'
+
+        get '/favorites', to: 'favorites#index'
         put '/favorite/:id', to: 'favorites#update'
       end
     end
