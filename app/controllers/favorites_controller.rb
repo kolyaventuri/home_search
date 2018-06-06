@@ -1,4 +1,4 @@
-class SearchController < ApplicationController
+class FavoritesController < ApplicationController
   def index
     render :index, layout: 'page'
   end
