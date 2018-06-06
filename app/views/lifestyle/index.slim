@@ -7,5 +7,19 @@ section.hero.is-info.is-bold
         | Rate the following by how important they are
 
 section.container#filters
+  = form_tag '/lifestyle/search', method: :post
+    .field
+      .control
+        label.label.is-medium Food
+        = select_tag 'importance[food]', options_for_select(@nums)
+    .field
+      .control
+        label.label.is-medium Outdoor Activities
+        = select_tag 'importance[active]', options_for_select(@nums)
+    .field
+      .control
+        label.label.is-medium Entertainment
+        = select_tag 'importance[entertainment]', options_for_select(@nums)
 
-= javascript_pack_tag 'lifestyle_form'
+    .field
+      = submit_tag 'Search', class: 'button'
