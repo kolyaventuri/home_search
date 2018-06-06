@@ -9,6 +9,6 @@ describe 'A user visiting the homepage' do
 
     click_link 'Sign in with Google'
 
-    expect(page).to have_content('mockuser')
+    expect(page).to have_content(mock_user_hash['info']['name'])
   end
 end

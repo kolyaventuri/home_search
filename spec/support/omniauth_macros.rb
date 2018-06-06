@@ -1,11 +1,9 @@
 module OmniauthMacros
   def mock_auth_hash
-    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(mock_hash)
+    OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(mock_user_hash)
   end
 
-  private
-
-  def mock_hash
+  def mock_user_hash
     {
       "provider" => "google_oauth2",
       "uid" => "100000000000000000000",

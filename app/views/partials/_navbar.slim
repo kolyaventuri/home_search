@@ -12,8 +12,11 @@ nav.navbar.is-transparent
         | Home
     .navbar-end
       .navbar-item
-        a.button.is-danger.is-inverted href=google_login_path
-          span.icon
-            i.fab.fa-google
-          span
-            | Sign in with Google
+        - unless current_user
+          a.button.is-danger.is-inverted href=google_login_path
+            span.icon
+              i.fab.fa-google
+            span
+              | Sign in with Google
+        - else
+          p Welcome, #{current_user['info']['name']}
