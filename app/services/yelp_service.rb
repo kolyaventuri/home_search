@@ -15,6 +15,17 @@ class YelpService
     parse_response(response.body)
   end
 
+  def self.calculate_midpoint(json)
+    coords = json[:businesses].map do |business|
+      business[:coordinates].values
+    end
+
+    {
+      latitude: coords.map(&:first).sum / coords.length,
+      longitude: coords.map(&:last).sum / coords.length
+    }
+  end
+
   private
 
   def build_request

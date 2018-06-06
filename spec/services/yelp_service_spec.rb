@@ -21,6 +21,6 @@ describe YelpService, type: :service do
       longitude: -106.6222967196353
     }
 
-    expect(result).to be(expected)
+    expect(result).to eq(expected)
   end
 end
