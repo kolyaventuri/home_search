@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   get '/search', to: 'search#index'
+  post '/lifestyle', to: 'lifestyle#index'
 
   get '/favorites', to: 'favorites#index'
 
