@@ -171,11 +171,3 @@ production:
         read:
           mode: :primary
         max_pool_size: 1
-default:
-  clients:
-    default:
-      uri: <%= ENV['MONGODB_URI'] %>
-      options:
-        read:
-          mode: :primary
-        max_pool_size: 1
